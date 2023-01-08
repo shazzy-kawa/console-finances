@@ -114,3 +114,19 @@ for(var i = 1; i < Months; i++) {
     var average = Change / (Months - 1);
 
 console.log("Average Change: $" + average);
+
+
+// 4: The greatest increase in profits
+
+var highestIncrease = { 
+    date: finances[0][0],
+    amount: finances[0][1] 
+}
+
+for(var i = 1; i < Months; i++) {
+    if(finances[i][1] - finances[i-1][1] > highestIncrease.amount)
+   {highestIncrease.date = finances[i][0];
+    highestIncrease.amount = finances[i][1] - finances[i-1][1]}
+}
+
+console.log("Highest Increase: ", highestIncrease);
