@@ -112,21 +112,38 @@ for(var i = 1; i < Months; i++) {
     Change += (finances[i][1] - finances[i-1][1])
     }
     var average = Change / (Months - 1);
+    var average100 = average*100;
+    var roundedAverage100= Math.round(average100);
+    var roundedAverage = roundedAverage100 / 100;
 
-console.log("Average Change: $" + average);
-
+console.log("Average Change: $" + roundedAverage);
 
 // 4: The greatest increase in profits
 
-var highestIncrease = { 
+var greatestIncrease = { 
     date: finances[0][0],
     amount: finances[0][1] 
 }
 
 for(var i = 1; i < Months; i++) {
-    if(finances[i][1] - finances[i-1][1] > highestIncrease.amount)
-   {highestIncrease.date = finances[i][0];
-    highestIncrease.amount = finances[i][1] - finances[i-1][1]}
-}
+    if(finances[i][1] - finances[i-1][1] > greatestIncrease.amount)
+    greatestIncrease.date = finances[i][0];
+    greatestIncrease.amount = finances[i][1] - finances[i-1][1]}
 
-console.log("Highest Increase: ", highestIncrease);
+console.log("Greatest Increase in profits: ", greatestIncrease);
+
+// 5: The greatest decrease in profits
+
+var greatestDecrease = { 
+    date: finances[0][0],
+    amount: finances[0][1]
+    }
+
+    for(var i = 1; i < Months; i++) {
+        if(finances[i][1] - finances[i-1][1] < greatestDecrease.amount)
+        {greatestDecrease.date = finances[i][0];
+        greatestDecrease.amount = finances[i][1] - finances[i-1][1]}
+    }
+    
+console.log("Greatest Decrease in profits: ", greatestDecrease);
+    
